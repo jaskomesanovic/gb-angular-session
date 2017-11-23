@@ -1,0 +1,31 @@
+<h2>
+  My Giphies</h2>
+
+<div class="heroes">
+  <div *ngFor="let hero of heroes " style="width:100%">
+
+    <div>
+      <img src="{{hero.url}}" />
+      <a routerLink="/detail/{{hero.id}}">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+
+      </a>
+      <button class="delete" title="delete hero" (click)="delete(hero)">x</button>
+    </div>
+  </div>
+</div>
+
+<!-- show this on presentation -->
+<div *ngIf='selectedHero'>
+  <app-hero-detail [hero]="selectedHero"></app-hero-detail>
+</div>
+
+<div>
+  <label>Giphy name:
+    <input #heroName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(heroName.value); heroName.value=''">
+    add
+  </button>
+</div>

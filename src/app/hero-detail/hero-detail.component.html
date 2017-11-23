@@ -1,0 +1,28 @@
+<div *ngIf="hero">
+
+  <h2>{{ hero.name | uppercase }} Details</h2>
+  <div>
+    <span>id: </span>{{hero.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="hero.name" placeholder="name" (keyup)="searchImage()" />
+    </label>
+    <div *ngIf="hero.url">
+      <img src="{{hero.url}}" alt="{{hero.name}}">
+    </div>
+  </div>
+
+</div>
+
+<button (click)="goBack()">go back</button>
+<button (click)="save()">save</button>
+
+
+<div *ngIf="giphies">
+  <h2>Select image</h2>
+  <div *ngFor="let img of giphies">
+    <div style="float:left">
+      <img src="{{img.images.downsized_medium.url}}" alt="" (click)="imageSelected(img.images.downsized_medium.url)">
+    </div>
+  </div>
+</div>
